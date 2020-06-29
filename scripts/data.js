@@ -33,7 +33,7 @@ export const data = {
             "date": 1401224400,
             "days": 165,
             "mission": "Sojus TMA-13M / ISS-Expedition 40 /ISS-Expedition 41",
-            "isMultiple": false
+            "isMultiple": 'false'
         }
     ]
 };
