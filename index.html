@@ -7,15 +7,50 @@
 </head>
 <body>
 <div class="container">
-    <button id="btn">Запрос данных</button>
+    <form method="post" action="" name="myForm" id="myForm" >
+        <div>
+            <label>Имя:
+                <input required type="text"  id="name" placeholder="Иванов Иван Иванович" >
+                <span class="warning" id="warningName">Фио должно содержать только фамилию имя и отчество, должны быть указаны полностью <br>(не инициалы), состоять только из букв</span>
+            </label>
+        </div>
+        <div>
+            <label>Дата первого полета:
+                <input required type="date"  id="date" placeholder="01.01.1970" >
+                <span class="warning" id="warningDate">Дата должна содержать только числы и точки</span>
+            </label>
+        </div>
+        <div>
+            <label>Длительность миссии, дней:
+                <input required type="number"  id="long">
+                <span class="warning" id="warningLong">Длительность миссии может содержать только число</span>
+            </label>
+        </div>
+        <div>
+            <label>Название мисии:
+                <input required type="text"  id="mission">
+                <span class="warning" id="warningMission">Название мисии должно состоять из букв, цифр и знаков "-", "_", "."</span>
+            </label>
+        </div>
+        <div>
+            <label>Повторные полеты:
+                <input type="checkbox"  id="repeatFlight">
+            </label>
+        </div>
+        <div>
+            <button id="addData" >Добавить в таблицу</button>
+        </div>
+    </form>
+
     <table border="1px" id="table">
-        <thead>
+        <thead >
             <tr>
                 <th>Космонавт</th>
                 <th>Дата первого полета</th>
                 <th>Длительность миссии</th>
                 <th>Название миссии</th>
                 <th>Повторные полеты</th>
+                <th>Управление данными</th>
             </tr>
         </thead>
 
