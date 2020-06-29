@@ -2,6 +2,8 @@ import {data} from "./data.js";
 import {getTable} from "./script.js";
 
 export const inputCosmonaut = {
+   // warningDate: document.getElementById('warningDate'),
+
 
     GiveCosmonautObject: function (name, date, long, mission, repeatFlight) {
         this.name = name;
@@ -16,10 +18,13 @@ export const inputCosmonaut = {
         let name = document.getElementById('name').value;
 
         let date = document.getElementById('date').value;
-        date = Date.parse(date);
-        if (date > Date.now()) {
-            console.log('qwerty')
-        }
+        // date = Date.parse(date);
+        // if (date > Date.now()) {
+        //     this.warningDate.classList.add('show');
+        // } else {
+        //     this.warningDate.classList.remove('show');
+        // }
+        console.log(Date.parse(date));
         let long = document.getElementById('long').value;
         let mission = document.getElementById('mission').value;
         let repeatFlight;
