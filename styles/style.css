@@ -35,7 +35,7 @@ input:last-child {
 
 .warning {
     visibility: hidden;
-    width: 700px;
+    width: 101.5%;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -43,8 +43,8 @@ input:last-child {
     padding: 8px;
     position: absolute;
     z-index: 1;
-    top: 34%;
-    left: 22%;
+    top: 110%;
+    left: -2%;
     /*margin: 0 10px;*/
 }
 .show {
@@ -55,4 +55,7 @@ input:last-child {
 
 table button {
     width: 100%;
+}
+form div {
+    position: relative;
 }

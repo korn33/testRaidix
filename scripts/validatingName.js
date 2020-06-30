@@ -1,5 +1,6 @@
 import {elementsHTML} from "./validator.js";
 import {validatingDate} from "./validatingDate.js";
+import {validatingLong} from "./validatingLong.js";
 // import {validatingEmail} from "./validatingEmail.js";
 // import {validatingPhone} from "./validatingPhone.js";
 
@@ -11,9 +12,11 @@ export const validatingName = {
     validingNameOnchange: false, // флаг что после ухода из поля все проверки успешны
 
     validatorName: function () {
+        console.log('validatorName');
         // запоминаем вводимое значение
         this.name = elementsHTML.inputName.value;
         if (this.name === '') {
+            console.log('строка пуста');
             this.validingNameOnchange = false;
             this.validingNameOninput = false;
             elementsHTML.btn.disabled = true;
@@ -34,8 +37,8 @@ export const validatingName = {
             elementsHTML.warningName.classList.add('show');
         }
         // не показываем warningName если стерли плохой символ или все вводимое значение
-        if ((this.onlyAllowedCharacters) || (!this.name)) {
-            this.validingNameOninput = true;
+        if ((this.onlyAllowedCharacters) && (this.name)) {
+            this.validingNameOninput = true; //||
             elementsHTML.warningName.classList.remove('show');
         }
         // счетчик сгруппированных пробелов, с исключением если они в начале или в конце
@@ -56,8 +59,8 @@ export const validatingName = {
         // } else {
         //     this.validingNameOninput = true;
         // }
-        // включение кнопки только если все поля валидны
-        if (this.validingNameOnchange && this.validingNameOninput && validatingDate.dataIsValiding) {
+        // включение кнопки только если все поля валидны this.validingNameOnchange &&
+        if ( this.validingNameOninput && validatingDate.dataIsValiding && validatingLong.longIsValiding) {
             elementsHTML.btn.disabled = false;
         } else {
             elementsHTML.btn.disabled = true;
@@ -65,13 +68,15 @@ export const validatingName = {
     },
 
     validatorNameEnd: function () {
+        console.log('validatorNameEnd');
         this.name = this.name.trim();
-        if (this.name === '') {
-            this.validingNameOnchange = false;
-            this.validingNameOninput = false;
-            elementsHTML.btn.disabled = true;
-            elementsHTML.warningName.classList.remove('show');
-        }
+        // if (this.name === '') {
+        //     console.log('строка пустая');
+        //     this.validingNameOnchange = false;
+        //     this.validingNameOninput = false;
+        //     elementsHTML.btn.disabled = true;
+        //     elementsHTML.warningName.classList.remove('show');
+        // }
         // приверка на то чтобы не ввели инициалы
         let arrayName = this.name.split(' ');
         // arrayName.forEach(function (word) {
@@ -104,12 +109,12 @@ export const validatingName = {
         }
         elementsHTML.inputName.value = this.name;
         //        if (this.validingNameOnchange && validatingEmail.validingEmailOnchange && validatingPhone.validingPhoneOnchange && this.validingNameOninput && validatingEmail.validingEmailOninput && validatingPhone.validingPhoneOninput) {
-        if (this.validingNameOnchange && this.validingNameOninput && validatingDate.dataIsValiding) {
-            elementsHTML.btn.disabled = false;
-        } else {
-            elementsHTML.btn.disabled = true;
-            //elementsHTML.warningName.classList.add('show');
-            this.validingNameOnchange = false;
-        }
+        // if (this.validingNameOnchange && this.validingNameOninput && validatingDate.dataIsValiding) {
+        //     elementsHTML.btn.disabled = false;
+        // } else {
+        //     elementsHTML.btn.disabled = true;
+        //     //elementsHTML.warningName.classList.add('show');
+        //     //this.validingNameOnchange = false;
+        // }
     }
 };

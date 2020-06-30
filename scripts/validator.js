@@ -1,5 +1,6 @@
 import {validatingName} from "./validatingName.js";
 import {validatingDate} from "./validatingDate.js";
+import {validatingLong} from "./validatingLong.js";
 // import {validatingEmail} from "./validatingEmail.js";
 // import {validatingPhone} from "./validatingPhone.js";
 
@@ -38,9 +39,6 @@ document.addEventListener('click', function (e) {
     } else if (targetClick.id === 'long') {
         targetClick.oninput = function () {
             validatingLong.validatorLong();
-        };
-        targetClick.onchange = function () {
-            validatingLong.validatorLongEnd();
         };
     }  else if (targetClick.id === 'mission') {
         targetClick.oninput = function () {

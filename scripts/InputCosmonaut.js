@@ -3,6 +3,7 @@ import {getTable} from "./script.js";
 import {elementsHTML} from "./validator.js";
 import {validatingName} from "./validatingName.js";
 import {validatingDate} from "./validatingDate.js";
+import {validatingLong} from "./validatingLong.js";
 
 export const inputCosmonaut = {
    // warningDate: document.getElementById('warningDate'),
@@ -18,6 +19,7 @@ export const inputCosmonaut = {
 
     safeCosmonaut: function (event) {
         event.preventDefault();
+        // validatingDate.validatorDateEnd();
         let name = document.getElementById('name').value;
 
         let date = document.getElementById('date').value;
@@ -27,7 +29,7 @@ export const inputCosmonaut = {
         // } else {
         //     this.warningDate.classList.remove('show');
         // }
-        console.log(Date.parse(date));
+        //console.log(Date.parse(date));
         let long = document.getElementById('long').value;
         let mission = document.getElementById('mission').value;
         let repeatFlight;
@@ -47,8 +49,9 @@ export const inputCosmonaut = {
         document.getElementById('mission').value = '';
         document.getElementById('repeatFlight').checked = false;
         elementsHTML.btn.disabled = true;
-        validatingName.validingNameOnchange = false;
+        // validatingName.validingNameOnchange = false;
         validatingName.validingNameOninput = false;
         validatingDate.dataIsValiding = false;
+        validatingLong.longIsValiding = false;
     }
 };
