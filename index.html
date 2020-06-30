@@ -10,14 +10,14 @@
     <form method="post" action="" name="myForm" id="myForm" >
         <div>
             <label>Имя:
-                <input required type="text"  id="name" placeholder="Иванов Иван Иванович" >
-                <span class="warning" id="warningName">Фио должно содержать только фамилию имя и отчество, должны быть указаны полностью <br>(не инициалы), состоять только из букв</span>
+                <input required type="text"  id="name">
+                <span class="warning" id="warningName">Имя может состоять только из букв, точек, пробелов или дефисов</span>
             </label>
         </div>
         <div>
             <label>Дата первого полета:
-                <input required type="date"  id="date" placeholder="01.01.1970" >
-                <span class="warning" id="warningDate">Некорректная дата</span>
+                <input required type="date"  id="date">
+                <span class="warning" id="warningDate">Дата возможна только от 12.04.1961 до текущей</span>
             </label>
         </div>
         <div>
@@ -29,7 +29,7 @@
         <div>
             <label>Название мисии:
                 <input required type="text"  id="mission">
-                <span class="warning" id="warningMission">Название мисии должно состоять из букв, цифр и знаков "-", "_", "."</span>
+                <span class="warning" id="warningMission">Название мисии может состоять из букв, цифр и знаков "-", "_", ".", "(", ")"</span>
             </label>
         </div>
         <div>
@@ -47,13 +47,12 @@
             <tr>
                 <th>Космонавт</th>
                 <th>Дата первого полета</th>
-                <th>Длительность миссии</th>
+                <th>Длительность миссии, дней</th>
                 <th>Название миссии</th>
                 <th>Повторные полеты</th>
                 <th>Управление данными</th>
             </tr>
         </thead>
-
     </table>
 </div>
 <script type="module" src="scripts/script.js"></script>

@@ -2,27 +2,15 @@ import {elementsHTML} from "./validator.js";
 import {validatingDate} from "./validatingDate.js";
 import {validatingLong} from "./validatingLong.js";
 import {validatingMission} from "./validatingMission.js";
-// import {validatingEmail} from "./validatingEmail.js";
-// import {validatingPhone} from "./validatingPhone.js";
 
 export const validatingName = {
-    // spaceNameCounter: 0,
-    // name: '',
+    name: '',
     validingNameOninput: false,  //флаг что при вводе пока все ок
     onlyAllowedCharacters: false, //использование только разрешенных символов
-    validingNameOnchange: false, // флаг что после ухода из поля все проверки успешны
+    //validingNameOnchange: false, // флаг что после ухода из поля все проверки успешны
 
     validatorName: function () {
-        console.log('validatorName');
-        // запоминаем вводимое значение
         this.name = elementsHTML.inputName.value;
-        if (this.name === '') {
-            console.log('строка пуста');
-            this.validingNameOnchange = false;
-            this.validingNameOninput = false;
-            elementsHTML.btn.disabled = true;
-        }
-        let spaceArray = this.name.match(/ +/g); //массив, содержащий элементы-пробелы из вводимой строки
         let arrCodeChar = [];
         let str = this.name.split('');
         str.forEach(function (sign) {
@@ -37,30 +25,18 @@ export const validatingName = {
             this.validingNameOninput = false;
             elementsHTML.warningName.classList.add('show');
         }
+
         // не показываем warningName если стерли плохой символ или все вводимое значение
-        if ((this.onlyAllowedCharacters) && (this.name)) {
-            this.validingNameOninput = true; //||
+        if (this.name === '') {
+            this.validingNameOninput = false;
+            elementsHTML.btn.disabled = true;
             elementsHTML.warningName.classList.remove('show');
         }
-        // счетчик сгруппированных пробелов, с исключением если они в начале или в конце
-        // if (spaceArray !== null) {
-        //     this.spaceNameCounter = spaceArray.length;
-        //     if (this.name.match(/^ +\S/g)) {
-        //         this.spaceNameCounter--;
-        //     }
-        //     if (this.name.match(/ +$/g)) {
-        //         this.spaceNameCounter--;
-        //     }
-        // }
-        // //если ввели больше трех слов, то включаем warningName
-        // if (this.spaceNameCounter > 2) {
-        //     this.validingNameOninput = false;
-        //     elementsHTML.warningName.classList.add('show');
-        //     return;
-        // } else {
-        //     this.validingNameOninput = true;
-        // }
-        // включение кнопки только если все поля валидны this.validingNameOnchange &&
+        if ((this.onlyAllowedCharacters) && (this.name)) {
+            this.validingNameOninput = true;
+            elementsHTML.warningName.classList.remove('show');
+        }
+
         if ( this.validingNameOninput && validatingDate.dataIsValiding && validatingLong.longIsValiding  && validatingMission.missionIsValiding) {
             elementsHTML.btn.disabled = false;
         } else {
@@ -68,12 +44,11 @@ export const validatingName = {
         }
     },
 
+    // делаем  с заглавной буквы
     validatorNameEnd: function () {
-        console.log('validatorNameEnd');
         this.name = this.name.trim();
         let arrayName = this.name.split(' ');
         if ((this.validingNameOninput) && (this.onlyAllowedCharacters)) {
-            // делаем  с заглавной буквы
             this.name = '';
             for (let i = 0; i < arrayName.length; i++) {
                 if (arrayName[i].length > 0) {
@@ -88,7 +63,6 @@ export const validatingName = {
                 }
             }
             this.name = this.name.trim();
-            this.validingNameOnchange = true;
         }
         elementsHTML.inputName.value = this.name;
     }

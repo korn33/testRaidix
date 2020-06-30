@@ -4,11 +4,10 @@ import {elementsHTML} from "./validator.js";
 import {validatingName} from "./validatingName.js";
 import {validatingDate} from "./validatingDate.js";
 import {validatingLong} from "./validatingLong.js";
+import {validatingMission} from "./validatingMission.js";
 
 export const inputCosmonaut = {
-   // warningDate: document.getElementById('warningDate'),
-
-
+    //конструктор новой записи
     GiveCosmonautObject: function (name, date, long, mission, repeatFlight) {
         this.name = name;
         this.date = Date.parse(date) / 1000;
@@ -17,19 +16,12 @@ export const inputCosmonaut = {
         this.isMultiple = repeatFlight;
     },
 
+    //запись в массив нового космонавта
     safeCosmonaut: function (event) {
         event.preventDefault();
-        // validatingDate.validatorDateEnd();
-        let name = document.getElementById('name').value;
 
+        let name = document.getElementById('name').value;
         let date = document.getElementById('date').value;
-        // date = Date.parse(date);
-        // if (date > Date.now()) {
-        //     this.warningDate.classList.add('show');
-        // } else {
-        //     this.warningDate.classList.remove('show');
-        // }
-        //console.log(Date.parse(date));
         let long = document.getElementById('long').value;
         let mission = document.getElementById('mission').value;
         let repeatFlight;
@@ -41,17 +33,20 @@ export const inputCosmonaut = {
 
         data.cosmonauts.push(new this.GiveCosmonautObject(name, date, long, mission, repeatFlight));
 
-        getTable();
+        getTable(); // добавление его в таблицу
 
+        //обнуление параметров валидации и полей формы
         document.getElementById('name').value = '';
         document.getElementById('date').value = '';
         document.getElementById('long').value = '';
         document.getElementById('mission').value = '';
         document.getElementById('repeatFlight').checked = false;
+
         elementsHTML.btn.disabled = true;
-        // validatingName.validingNameOnchange = false;
+
         validatingName.validingNameOninput = false;
         validatingDate.dataIsValiding = false;
         validatingLong.longIsValiding = false;
+        validatingMission.missionIsValiding = false;
     }
 };

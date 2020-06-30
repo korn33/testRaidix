@@ -14,7 +14,6 @@
 }
 .container form{
     display: block;
-    /*width: 30%;*/
     margin: 1rem auto;
 }
 input:focus {
@@ -23,15 +22,10 @@ input:focus {
 input {
     width: 50vw;
     display: block;
-    /*height: 4vh;*/
 }
 input:last-child {
     width: auto;
 }
-/*.container div {*/
-    /*margin: 10px 0;*/
-    /*position: relative;*/
-/*}*/
 
 .warning {
     visibility: hidden;
@@ -45,7 +39,6 @@ input:last-child {
     z-index: 1;
     top: 110%;
     left: -2%;
-    /*margin: 0 10px;*/
 }
 .show {
     visibility: visible;
@@ -58,4 +51,11 @@ table button {
 }
 form div {
     position: relative;
+}
+button, input[type=checkbox] {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
 }
