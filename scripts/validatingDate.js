@@ -1,19 +1,23 @@
 import {elementsHTML} from "./validator.js";
+import {validatingName} from "./validatingName.js";
 
 export const validatingDate = {
-    date: document.getElementById('date').value,
+    dataIsValiding: false,
 
     validatorDateEnd: function () {
-        console.log('validatorDateEnd');
-        console.log(this.date / 1000);
-        this.date = Date.parse(this.date);
-        console.log(this.date);
-        console.log(Date.now());
-        if ( (this.date > Date.now()) && (Date.parse(this.date) < -275270400000) ) {
-            console.log((Date.parse(this.date) < -275270400000));
+        let date = document.getElementById('date').value;
+        date = Date.parse(date);
+        if ( !( (date < Date.now()) && (date > -275270400000) ) ) { // от полета Гагарина до текущей даты
             elementsHTML.warningDate.classList.add('show');
+            this.dataIsValiding = false;
         } else {
             elementsHTML.warningDate.classList.remove('show');
+            this.dataIsValiding = true;
+        }
+        if (validatingName.validingNameOnchange && validatingName.validingNameOninput && this.dataIsValiding) {
+            elementsHTML.btn.disabled = false;
+        } else {
+            elementsHTML.btn.disabled = true;
         }
     },
 

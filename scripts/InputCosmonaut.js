@@ -1,5 +1,8 @@
 import {data} from "./data.js";
 import {getTable} from "./script.js";
+import {elementsHTML} from "./validator.js";
+import {validatingName} from "./validatingName.js";
+import {validatingDate} from "./validatingDate.js";
 
 export const inputCosmonaut = {
    // warningDate: document.getElementById('warningDate'),
@@ -43,5 +46,9 @@ export const inputCosmonaut = {
         document.getElementById('long').value = '';
         document.getElementById('mission').value = '';
         document.getElementById('repeatFlight').checked = false;
+        elementsHTML.btn.disabled = true;
+        validatingName.validingNameOnchange = false;
+        validatingName.validingNameOninput = false;
+        validatingDate.dataIsValiding = false;
     }
 };

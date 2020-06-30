@@ -18,7 +18,7 @@ export const elementsHTML = {
 };
 
 elementsHTML.btn.disabled = true;
-
+//console.log(elementsHTML.btn);
 document.addEventListener('click', function (e) {
     const targetClick = e.target; // запоминаем куда кликнули
     if (targetClick.id === 'name') {

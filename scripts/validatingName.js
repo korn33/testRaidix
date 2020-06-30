@@ -1,4 +1,5 @@
 import {elementsHTML} from "./validator.js";
+import {validatingDate} from "./validatingDate.js";
 // import {validatingEmail} from "./validatingEmail.js";
 // import {validatingPhone} from "./validatingPhone.js";
 
@@ -12,6 +13,11 @@ export const validatingName = {
     validatorName: function () {
         // запоминаем вводимое значение
         this.name = elementsHTML.inputName.value;
+        if (this.name === '') {
+            this.validingNameOnchange = false;
+            this.validingNameOninput = false;
+            elementsHTML.btn.disabled = true;
+        }
         let spaceArray = this.name.match(/ +/g); //массив, содержащий элементы-пробелы из вводимой строки
         let arrCodeChar = [];
         let str = this.name.split('');
@@ -51,7 +57,7 @@ export const validatingName = {
         //     this.validingNameOninput = true;
         // }
         // включение кнопки только если все поля валидны
-        if (this.validingNameOnchange && this.validingNameOninput ) {
+        if (this.validingNameOnchange && this.validingNameOninput && validatingDate.dataIsValiding) {
             elementsHTML.btn.disabled = false;
         } else {
             elementsHTML.btn.disabled = true;
@@ -60,7 +66,12 @@ export const validatingName = {
 
     validatorNameEnd: function () {
         this.name = this.name.trim();
-
+        if (this.name === '') {
+            this.validingNameOnchange = false;
+            this.validingNameOninput = false;
+            elementsHTML.btn.disabled = true;
+            elementsHTML.warningName.classList.remove('show');
+        }
         // приверка на то чтобы не ввели инициалы
         let arrayName = this.name.split(' ');
         // arrayName.forEach(function (word) {
@@ -89,15 +100,16 @@ export const validatingName = {
             this.name = this.name.trim();
             this.validingNameOnchange = true;
         } else {
-            elementsHTML.warningName.classList.add('show');
-            this.validingNameOnchange = false;
+
         }
         elementsHTML.inputName.value = this.name;
         //        if (this.validingNameOnchange && validatingEmail.validingEmailOnchange && validatingPhone.validingPhoneOnchange && this.validingNameOninput && validatingEmail.validingEmailOninput && validatingPhone.validingPhoneOninput) {
-        if (this.validingNameOnchange && this.validingNameOninput ) {
+        if (this.validingNameOnchange && this.validingNameOninput && validatingDate.dataIsValiding) {
             elementsHTML.btn.disabled = false;
         } else {
             elementsHTML.btn.disabled = true;
+            //elementsHTML.warningName.classList.add('show');
+            this.validingNameOnchange = false;
         }
     }
 };
