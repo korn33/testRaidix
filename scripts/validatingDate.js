@@ -1,6 +1,7 @@
 import {elementsHTML} from "./validator.js";
 import {validatingName} from "./validatingName.js";
 import {validatingLong} from "./validatingLong.js";
+import {validatingMission} from "./validatingMission.js";
 
 export const validatingDate = {
     dataIsValiding: false,
@@ -16,7 +17,7 @@ export const validatingDate = {
             elementsHTML.warningDate.classList.remove('show');
             this.dataIsValiding = true;
         }//validatingName.validingNameOnchange &&
-        if ( validatingName.validingNameOninput && this.dataIsValiding && validatingLong.longIsValiding) {
+        if ( validatingName.validingNameOninput && this.dataIsValiding && validatingLong.longIsValiding  && validatingMission.missionIsValiding) {
             elementsHTML.btn.disabled = false;
         } else {
             elementsHTML.btn.disabled = true;

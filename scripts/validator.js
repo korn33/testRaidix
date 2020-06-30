@@ -1,6 +1,7 @@
 import {validatingName} from "./validatingName.js";
 import {validatingDate} from "./validatingDate.js";
 import {validatingLong} from "./validatingLong.js";
+import {validatingMission} from "./validatingMission.js";
 // import {validatingEmail} from "./validatingEmail.js";
 // import {validatingPhone} from "./validatingPhone.js";
 

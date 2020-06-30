@@ -1,6 +1,7 @@
 import {elementsHTML} from "./validator.js";
 import {validatingDate} from "./validatingDate.js";
 import {validatingLong} from "./validatingLong.js";
+import {validatingMission} from "./validatingMission.js";
 // import {validatingEmail} from "./validatingEmail.js";
 // import {validatingPhone} from "./validatingPhone.js";
 
@@ -60,7 +61,7 @@ export const validatingName = {
         //     this.validingNameOninput = true;
         // }
         // включение кнопки только если все поля валидны this.validingNameOnchange &&
-        if ( this.validingNameOninput && validatingDate.dataIsValiding && validatingLong.longIsValiding) {
+        if ( this.validingNameOninput && validatingDate.dataIsValiding && validatingLong.longIsValiding  && validatingMission.missionIsValiding) {
             elementsHTML.btn.disabled = false;
         } else {
             elementsHTML.btn.disabled = true;
@@ -70,25 +71,9 @@ export const validatingName = {
     validatorNameEnd: function () {
         console.log('validatorNameEnd');
         this.name = this.name.trim();
-        // if (this.name === '') {
-        //     console.log('строка пустая');
-        //     this.validingNameOnchange = false;
-        //     this.validingNameOninput = false;
-        //     elementsHTML.btn.disabled = true;
-        //     elementsHTML.warningName.classList.remove('show');
-        // }
-        // приверка на то чтобы не ввели инициалы
         let arrayName = this.name.split(' ');
-        // arrayName.forEach(function (word) {
-        //     if (word.length === 1) {
-        //         validatingName.validingNameOninput = false;
-        //         elementsHTML.warningName.classList.add('show');
-        //     }
-        // });
-        //если при вводе нет ошибок и введено три слова
-        //        if ((this.name.match(/ +/g)) && (this.name.match(/ +/g).length === 2) && (this.validingNameOninput) && (this.onlyAllowedCharacters)) {
         if ((this.validingNameOninput) && (this.onlyAllowedCharacters)) {
-            // делаем их с заглавной буквы
+            // делаем  с заглавной буквы
             this.name = '';
             for (let i = 0; i < arrayName.length; i++) {
                 if (arrayName[i].length > 0) {
@@ -104,17 +89,7 @@ export const validatingName = {
             }
             this.name = this.name.trim();
             this.validingNameOnchange = true;
-        } else {
-
         }
         elementsHTML.inputName.value = this.name;
-        //        if (this.validingNameOnchange && validatingEmail.validingEmailOnchange && validatingPhone.validingPhoneOnchange && this.validingNameOninput && validatingEmail.validingEmailOninput && validatingPhone.validingPhoneOninput) {
-        // if (this.validingNameOnchange && this.validingNameOninput && validatingDate.dataIsValiding) {
-        //     elementsHTML.btn.disabled = false;
-        // } else {
-        //     elementsHTML.btn.disabled = true;
-        //     //elementsHTML.warningName.classList.add('show');
-        //     //this.validingNameOnchange = false;
-        // }
     }
 };
